@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>login</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="robots" content="all,follow">
+    <link rel="stylesheet" href="https://www.jq22.com/jquery/bootstrap-4.2.1.css">
+    <link rel="stylesheet" href="./CSS/login&register.css" id="theme-stylesheet">
+    <link rel="stylesheet" href="./CSS/style.css" />
+    <title>login</title>
+</head>
+
+<body>
+    <!-- 网页头部 -->
+    <header style="background-color: black;">
+        <a href="index.html" style="text-decoration: none;">
+            <div class="logo">
+                爱若卫士
+            </div>
+        </a>
+        <div class="burger">
+            <div class="burger-line1"></div>
+            <div class="burger-line2"></div>
+            <div class="burger-line3"></div>
+        </div>
+    </header>
+    <div class="page login-page">
+        <div class="container d-flex align-items-center">
+            <div class="form-holder has-shadow">
+                <div class="row">
+                    <!-- Logo & Information Panel-->
+                    <div class="col-lg-6">
+                        <div class="info d-flex align-items-center">
+                            <div class="content">
+                                <div class="logo">
+                                    <h1>欢迎登录</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Form Panel    -->
+                    <div class="col-lg-6 bg-white">
+                        <div class="form d-flex align-items-center">
+                            <div class="content">
+                                <form method="post" action="login.html" class="form-validate" id="loginFrom">
+                                    <div class="form-group">
+                                        <input id="login-username" type="text" name="userName" required
+                                            data-msg="请输入手机号" placeholder="手机号" class="input-material">
+                                    </div>
+                                    <div class="form-group">
+                                        <input id="login-password" type="password" name="passWord" required
+                                            data-msg="请输入密码" placeholder="密码" class="input-material">
+                                    </div>
+                                    <button id="login" type="submit" class="btn btn-primary">登录</button>
+                                    <div style="margin-top: -40px;">
+                                        <!-- <input type="checkbox"  id="check1"/>&nbsp;<span>记住密码</span>
+                    	<input type="checkbox" id="check2"/>&nbsp;<span>自动登录</span> -->
+                                        <div class="custom-control custom-checkbox " style="float: right;">
+                                            <input type="checkbox" class="custom-control-input" id="check2">
+                                            <label class="custom-control-label" for="check2">自动登录</label>
+                                        </div>
+                                        <div class="custom-control custom-checkbox " style="float: right;">
+                                            <input type="checkbox" class="custom-control-input" id="check1">
+                                            <label class="custom-control-label" for="check1">记住密码&nbsp;&nbsp;</label>
+                                        </div>
+                                    </div>
+                                </form>
+                                <br />
+                                <small>没有账号?</small><a href="register.html" class="signup">&nbsp;注册</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- JavaScript files-->
+    <script src="https://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+    <script src="https://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
+    <script src="vendor/jquery-validation/jquery.validate.min.js"></script>
+    <!--表单验证-->
+    <!-- Main File-->
+    <script src="js/login&register.js"></script>
+    <script>
+        $(function () {
+            /*判断上次是否勾选记住密码和自动登录*/
+            var check1s = localStorage.getItem("check1");
+            var check2s = localStorage.getItem("check2");
+            var oldName = localStorage.getItem("userName");
+            var oldPass = localStorage.getItem("passWord");
+            if (check1s == "true") {
+                $("#login-username").val(oldName);
+                $("#login-password").val(oldPass);
+                $("#check1").prop('checked', true);
+            } else {
+                $("#login-username").val('');
+                $("#login-password").val('');
+                $("#check1").prop('checked', false);
+            }
+            if (check2s == "true") {
+                $("#check2").prop('checked', true);
+                $("#loginFrom").submit();
+                //location="https://www.baidu.com?userName="+oldName+"&passWord="+oldPass;//添加退出当前账号功能
+            } else {
+                $("#check2").prop('checked', false);
+            }
+            /*拿到刚刚注册的账号*/
+            /*if(localStorage.getItem("name")!=null){
+                $("#login-username").val(localStorage.getItem("name"));
+            }*/
+            /*登录*/
+            $("#login").click(function () {
+                var userName = $("#login-username").val();
+                var passWord = $("#login-password").val();
+                /*获取当前输入的账号密码*/
+                localStorage.setItem("userName", userName)
+                localStorage.setItem("passWord", passWord)
+                /*获取记住密码  自动登录的 checkbox的值*/
+                var check1 = $("#check1").prop('checked');
+                var check2 = $('#check2').prop('checked');
+                localStorage.setItem("check1", check1);
+                localStorage.setItem("check2", check2);
+            })
+
+            /*$("#check2").click(function(){
+                var flag=$('#check2').prop('checked');
+                if(flag){
+                    var userName=$("#login-username").val();
+                    var passWord=$("#login-password").val();
+                    $.ajax({
+                        type:"post",
+                        url:"http://localhost:8080/powers/pow/regUsers",
+                        data:{"userName":userName,"passWord":passWord},
+                        async:true,
+                        success:function(res){
+                            alert(res);
+                        }
+                    });
+                }
+            })*/
+        })
+    </script>
+    <footer style="margin-top: 0px;">
+        <div class="footer-menus">
+            <div class="contact-us">
+                <p class="menu-title">联系我们</p>
+                <p>地址：</p>
+                <p>电话</p>
+                <p>传真</p>
+                <p>电子邮件：admin@abc.com</p>
+            </div>
+            <div class="service-menu footer-menu">
+                <p class="menu-title">服务概览</p>
+                <ul class="menu-items">
+                    <li><a href="#">网站建设</a></li>
+                    <li><a href="#">域名购买</a></li>
+                    <li><a href="#">网页设计</a></li>
+                    <li><a href="#">移动应用</a></li>
+                </ul>
+            </div>
+            <div class="service-menu footer-menu">
+                <p class="menu-title">成功案例</p>
+                <ul class="menu-items">
+                    <li><a href="#">桌面网站</a></li>
+                    <li><a href="#">移动网站</a></li>
+                    <li><a href="#">科研网站</a></li>
+                    <li><a href="#">软件应用</a></li>
+                </ul>
+            </div>
+            <div class="service-menu footer-menu">
+                <p class="menu-title">公司动态</p>
+                <ul class="menu-items">
+                    <li><a href="#">信息公开</a></li>
+                    <li><a href="#">最近新闻</a></li>
+                    <li><a href="#">最新博客</a></li>
+                </ul>
+            </div>
+            <div class="service-menu footer-menu">
+                <p class="menu-title">帮助与支持</p>
+                <ul class="menu-items">
+                    <li><a href="#">帮助中心</a></li>
+                    <li><a href="#">联系客服</a></li>
+                    <li><a href="#">文档资源</a></li>
+                </ul>
+            </div>
+            <p class="icp-info">湘ICP备19026630号-1</p>
+            <p class="rights">&copy; 2020 云留月科技有限公司</p>
+            <div class="scroll-to-top">
+                <a href="#"><i class="fas fa-chevron-up"></i></a>
+            </div>
+        </div>
+    </footer>
+    <!-- 引入JS文件 -->
+    <script src="./index.js"></script>
+</body>
+
+</html>
