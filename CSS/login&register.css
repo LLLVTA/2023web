@@ -1894,7 +1894,7 @@ input.input-material.is-invalid ~ label {
 }
 
 .login-page .form-holder .info {
-  background: #39386e;
+  background: black;
   color: #fff;
 }
 
@@ -2127,15 +2127,15 @@ STYLE SWITCHER FOR DEMO
 }
 
 .btn-primary {
-  color: color-yiq(#39386e);
-  background-color: #39386e;
-  border-color: #39386e;
+  color: color-yiq(black);
+  background-color: black;
+  border-color: black;
 }
 
 .btn-primary:hover {
-  color: color-yiq(#39386e);
-  background-color: #39386e;
-  border-color: #39386e;
+  color: color-yiq(black);
+  background-color: black;
+  border-color: black;
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -2144,16 +2144,16 @@ STYLE SWITCHER FOR DEMO
 }
 
 .btn-primary.disabled, .btn-primary:disabled {
-  color: color-yiq(#39386e);
-  background-color: #39386e;
-  border-color: #39386e;
+  color: color-yiq(black);
+  background-color: black;
+  border-color: black;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
-  color: color-yiq(#39386e);
-  background-color: #39386e;
-  border-color: #39386e;
+  color: color-yiq(black);
+  background-color: black;
+  border-color: black;
 }
 
 .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
